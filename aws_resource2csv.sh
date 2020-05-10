@@ -7,7 +7,7 @@
 #
 # 2. $ aws-vault add test_env
 # Enter Access Key ID: AKXXXXXXXXXXXXXXXXXX
-# Enter Secret Access Key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+# Enter Secret Access Key: xxxxxxxxxxxxxxxxxxxxxxx
 # Added credentials to profile "test_env" in vault
 #
 # 3. $ pip install csvkit
@@ -43,19 +43,19 @@ cd output_csv
 
  # lb
  `aws-vault exec ${env} --no-session -- aws elbv2 describe-load-balancers --region ${region} --query LoadBalancers[] |\
- in2csv --format json > lb.csv`
+ in2csv --format json > LoadBalancers.csv`
 
- # subnet
+ # Subnets
  `aws-vault exec ${env} --no-session -- aws ec2 describe-subnets --region ${region} --query Subnets[] |\
- in2csv --format json > subnet.csv`
+ in2csv --format json > Subnets.csv`
 
- # vpc
+ # Vpcs
  `aws-vault exec ${env} --no-session -- aws ec2 describe-vpcs --region ${region} --query Vpcs[] |\
- in2csv --format json > vpc.csv`
+ in2csv --format json > Vpcs.csv`
 
  # securityGroup
  `aws-vault exec ${env} --no-session -- aws ec2 describe-security-groups --region ${region} --query SecurityGroups[] |\
- in2csv --format json > securityGroup.csv`
+ in2csv --format json > SecurityGroups.csv`
 
  # VpcEndpoints
  `aws-vault exec ${env} --no-session -- aws ec2 describe-vpc-endpoints --region ${region} --query VpcEndpoints[] |\
